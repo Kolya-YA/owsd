@@ -1,0 +1,140 @@
+:root,
+::backdrop {
+    --col-dark: hsl(0 0% 20%);
+    --col-light: hsl(0 0% 90%);
+    --hor-gradient: linear-gradient(to right,#3f59ffbb 26%, #f20000bb 74%);
+    --ver-gradient: linear-gradient(to bottom,#3f59ffbb 26%, #f20000bb 74%);
+    --min-card-width: 32ch;
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+body {
+    display: grid;
+    margin: 0;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+    min-width: 375px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    color: var(--col-light);
+    background-color: var(--col-dark)
+}
+
+.main {
+    padding: 1rem;
+    background: url(../assets/bg-pattern.png), var(--ver-gradient);
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+@media (min-width: calc(32ch * 2 + 8rem)) {
+    .main {
+        background: url(../assets/bg-pattern.png), var(--hor-gradient);
+    }
+}
+
+.header {
+    padding: 1rem;
+}
+
+.header > h1 {
+    margin: 0;
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 400;
+}
+
+.card {
+    flex: 1 0 var(--min-card-width);
+    display: grid;
+    place-content: center;
+    padding: 1rem;
+    text-align: center;
+}
+
+.card > img {
+    display: inline-block;
+    min-height: 100px;
+    margin-inline: auto;
+    object-fit: contain;
+}
+
+.card > a {
+    display: inline-block;
+    margin-inline: auto;
+    padding: 0.8em 1.6em;
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: inherit;
+    background-color: hsl(0 0% 20% / 20%);
+    border: 2px solid var(--col-light);
+    border-radius: 100vh;
+    transition: color 300ms ease, background-color 300ms ease;
+}
+
+.card > a:hover,
+.card > a:focus-visible {
+    color: var(--col-dark);
+    background-color: var(--col-light);
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding-block: 1rem;
+    padding-inline: 1rem;
+}
+
+.footer > p {
+    margin: 0;
+}
+
+.footer > button {
+    cursor: pointer;
+    color: inherit;
+    padding: .5em 1em;
+    background: transparent;
+    border: 1px solid var(--col-light);
+    border-radius: 3px;
+    transition: color 300ms ease, background-color 300ms ease;
+}
+
+.footer > button:hover,
+.footer > button:focus-visible {
+    color: var(--col-dark);
+    background-color: var(--col-light);
+}
+
+.dialog {
+    max-width: min(calc(100vw - 1rem * 2), 65ch);
+    max-height: calc(100vh - 1rem * 2);
+    padding: 0;
+    background-color: var(--col-light);
+    color: var(--col-dark);
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0 0 1rem var(--col-light);
+}
+
+.dialog::backdrop {
+    background-color: var(--col-dark);
+    opacity: .8;
+}
+
+.dialog > section {
+    padding: 1rem;
+}
